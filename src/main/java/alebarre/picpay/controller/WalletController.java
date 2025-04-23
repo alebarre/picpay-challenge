@@ -3,6 +3,7 @@ package alebarre.picpay.controller;
 import alebarre.picpay.DTO.CreateWalletDTO;
 import alebarre.picpay.entity.Wallet;
 import alebarre.picpay.service.WalletService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class WalletController {
     }
 
     @PostMapping("/wallets")
-    public ResponseEntity<Wallet> createWallet(@RequestBody CreateWalletDTO dto) {
+    public ResponseEntity<Wallet> createWallet(@Valid @RequestBody CreateWalletDTO dto) {
         var wallet = walletService.createWallet(dto);
         return ResponseEntity.ok(wallet);
     }
